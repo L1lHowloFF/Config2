@@ -70,19 +70,19 @@ get_dependencies_from_github(self, package_name) - скачивание зави
 parse_dependencies(self, cargo_toml_content) - парсинг зависимостей из Cargo.toml  
 
 ## Класс DependencyGraph
-### Функции:
+### Основные функции:
 __init__(self) - инициализация графа зависимостей  
 build_graph_bfs(self, start_package, dependency_fetcher) - построение графа BFS без рекурсии  
 detect_cycles(self) - обнаружение циклических зависимостей в графе  
 
 ## Класс TestRepository
-### Функции:
+### Основные функции:
 __init__(self, test_file_path) - инициализация тестового репозитория  
 load_test_graph(self) - загрузка тестового графа из файла  
 get_dependencies(self, package) - получение зависимостей пакета из тестового графа  
 
 ## Функции main.py
-### Функции:
+### Основные функции:
 print_config_as_key_value(config) - вывод параметров конфигурации в формате ключ-значение  
 print_dependencies(dependencies) - вывод списка зависимостей  
 main() - основная функция приложения  
