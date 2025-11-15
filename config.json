@@ -1,0 +1,8 @@
+{
+    "package_name": "test_package",
+    "repository_url": "https://example.com",
+    "test_mode": false,
+    "test_repository_path": "",
+    "output_filename": "dependencies_graph.png",
+    "ascii_tree_output": true
+}
