@@ -44,5 +44,57 @@
 репозитория, где пакеты называются большими латинскими буквами.
 Продемонстрирована функциональность этого этапа на различных случаях
 работы с тестовым репозиторием.
-4. Результат выполнения этапа сохранить в репозиторий стандартно
+4. Результат выполнения этапа сохранен в репозиторий стандартно
 оформленным коммитом.
+
+# Описание функций и настроек
+## Класс Config
+### Основные функции
+__init__(self, config_data) - инициализация конфигурации из словаря данных  
+load_from_file(cls, file_path) - загрузка конфигурации из JSON файла  
+validate(self) - валидация всех параметров конфигурации  
+to_dict(self) - возврат конфигурации в виде словаря  
+
+## Класс DependencyParser
+### Основные функции:
+__init__(self, config) - инициализация парсера с конфигурацией  
+get_cargo_toml_from_github(self, repo_url) - скачивание Cargo.toml из GitHub репозитория  
+parse_dependencies(self, cargo_toml_content) - парсинг Cargo.toml и извлечение зависимостей  
+get_direct_dependencies(self) - получение прямых зависимостей пакета  
+
+## Класс DependencyFetcher
+### Основные функции:
+__init__(self, config) - инициализация сборщика зависимостей  
+get_dependencies(self, package_name) - получение зависимостей для указанного пакета  
+get_dependencies_from_github(self, package_name) - скачивание зависимостей из GitHub  
+parse_dependencies(self, cargo_toml_content) - парсинг зависимостей из Cargo.toml  
+
+## Класс DependencyGraph
+### Функции:
+__init__(self) - инициализация графа зависимостей  
+build_graph_bfs(self, start_package, dependency_fetcher) - построение графа BFS без рекурсии  
+detect_cycles(self) - обнаружение циклических зависимостей в графе  
+
+## Класс TestRepository
+### Функции:
+__init__(self, test_file_path) - инициализация тестового репозитория  
+load_test_graph(self) - загрузка тестового графа из файла  
+get_dependencies(self, package) - получение зависимостей пакета из тестового графа  
+
+## Функции main.py
+### Функции:
+print_config_as_key_value(config) - вывод параметров конфигурации в формате ключ-значение  
+print_dependencies(dependencies) - вывод списка зависимостей  
+main() - основная функция приложения  
+
+# Примеры использования
+## Этап 1
+<img width="1843" height="1000" alt="image" src="https://github.com/user-attachments/assets/6d19fa20-74e0-4335-a72e-d00725801ba0" />
+
+## Этап 2
+<img width="2154" height="1378" alt="image" src="https://github.com/user-attachments/assets/3c69c40d-c7ea-4f26-9d5b-2fd72c81da6e" />
+
+## Этап 3
+<img width="2051" height="1293" alt="image" src="https://github.com/user-attachments/assets/9cb80a6c-d1a2-4211-ac1a-fa2b4164e701" />  
+<img width="2078" height="1301" alt="image" src="https://github.com/user-attachments/assets/3eaa21e1-1bd5-43a2-8fbf-0dadde82a0ee" />
+
